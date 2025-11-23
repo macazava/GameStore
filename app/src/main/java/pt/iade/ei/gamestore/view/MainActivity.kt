@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Game
 import pt.iade.ei.gamestore.controller.GameController
+import pt.iade.ei.gamestore.view.ui.GameDetailActivity
 import pt.iade.ei.gamestore.view.ui.components.GameCard
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MainScreen(games = games) { selectedGame ->
                 val intent = Intent(this, GameDetailActivity::class.java)
-                intent.putExtra("game", selectedGame)
+                intent.putExtra("gameId", selectedGame.id) // envia só o ID
                 startActivity(intent)
             }
         }
