@@ -19,6 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Game
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.geometry.Offset
+
 
 @Composable
 fun GameCard(game: Game, onClick: () -> Unit) {
@@ -45,7 +49,15 @@ fun GameCard(game: Game, onClick: () -> Unit) {
             // Nome do jogo no canto inferior esquerdo
             Text(
                 text = game.name,
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    shadow = Shadow(
+                        color = Color.Black.copy(alpha = 10f),
+                        offset = Offset(4f, 4f),
+                        blurRadius = 2f
+                    )
+                ),
                 modifier = Modifier
                     .align(Alignment.BottomStart)
                     .padding(12.dp)
