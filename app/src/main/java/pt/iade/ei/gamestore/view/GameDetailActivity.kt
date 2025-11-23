@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.controller.GameController
@@ -107,4 +108,11 @@ fun ErrorScreen(message: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(message)
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGameDetailScreen() {
+    val sampleGame = pt.iade.ei.gamestore.controller.GameController.getSampleGames().first() // The Sims 4
+    GameDetailScreen(game = sampleGame, onBack = {})
 }
