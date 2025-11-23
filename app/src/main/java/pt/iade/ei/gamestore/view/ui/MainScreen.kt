@@ -19,7 +19,7 @@ import pt.iade.ei.gamestore.view.ui.components.GameCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-//esta tela foi criada para ser chamada diretamente na MainActivity
+//esta tela foi criada para ser chamada diretamente na MainActivity (porque não tenho a certeza se podia criar como tal uma screen na mainactivity)
 fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
     var selectedTab by remember { mutableStateOf(0) }
 
