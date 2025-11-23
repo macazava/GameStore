@@ -55,7 +55,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
 
                 //Nome da empresa alinhado à esquerda
                 Text(
-                    text = "Name of the company",
+                    text = "PlayBloom",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.align(Alignment.Start)
                 )
