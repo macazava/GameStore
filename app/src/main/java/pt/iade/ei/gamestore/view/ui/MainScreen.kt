@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
@@ -24,19 +25,19 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
 
     Scaffold(
         topBar = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                Spacer(modifier = Modifier.height(24.dp)) // espaço acima do título
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            ) {
+                Spacer(modifier = Modifier.height(24.dp)) // espaço acima
+
+                //Ícones alinhados à direita
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = "Name of the company",
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.weight(1f)
-                    )
                     Image(
                         painter = painterResource(id = R.drawable.icon_notification),
                         contentDescription = "Notificações",
@@ -49,7 +50,17 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                         modifier = Modifier.size(24.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(16.dp)) // espaço abaixo do título
+
+                Spacer(modifier = Modifier.height(50.dp)) // espaço entre ícones e título
+
+                //Nome da empresa alinhado à esquerda
+                Text(
+                    text = "Name of the company",
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                    modifier = Modifier.align(Alignment.Start)
+                )
+
+                Spacer(modifier = Modifier.height(16.dp)) // espaço abaixo
             }
         },
         bottomBar = {
