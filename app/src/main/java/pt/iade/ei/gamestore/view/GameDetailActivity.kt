@@ -17,8 +17,10 @@ import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Game
+import pt.iade.ei.gamestore.model.Item
 import pt.iade.ei.gamestore.view.ui.components.GameDetailCard
 import pt.iade.ei.gamestore.view.ui.components.ItemCard
+import pt.iade.ei.gamestore.view.ui.components.PurchaseBottomSheet
 
 class GameDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +42,18 @@ class GameDetailActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameDetailScreen(game: Game, onBack: () -> Unit) {
+    var itemSelecionado by remember { mutableStateOf<Item?>(null) }
+
+    if (itemSelecionado != null) {
+        PurchaseBottomSheet(
+            item = itemSelecionado!!,
+            aoFechar = { itemSelecionado = null }
+        )
+    }
+
     Scaffold(
         topBar = {
             Box(modifier = Modifier.fillMaxWidth()) {
-                // 🔙 Ícone de voltar
                 IconButton(
                     onClick = onBack,
                     modifier = Modifier.align(Alignment.CenterStart)
@@ -55,14 +65,12 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
                     )
                 }
 
-                // 🕹️ Nome do jogo centralizado
                 Text(
                     text = game.name,
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.align(Alignment.Center)
                 )
 
-                // ❤️ Ícone de favorito
                 IconButton(
                     onClick = { /* ação futura */ },
                     modifier = Modifier.align(Alignment.CenterEnd)
@@ -88,7 +96,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
 
             item {
                 Text(
-                    text = "Purchasable Items",
+                    text = "Itens compráveis",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
@@ -97,7 +105,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
             }
 
             items(game.items) { item ->
-                ItemCard(item = item)
+                ItemCard(item = item, aoClicar = { itemSelecionado = item })
             }
         }
     }
@@ -113,6 +121,6 @@ fun ErrorScreen(message: String) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailScreen() {
-    val sampleGame = pt.iade.ei.gamestore.controller.GameController.getSampleGames().first() // The Sims 4
+    val sampleGame = GameController.getSampleGames().first() // The Sims 4
     GameDetailScreen(game = sampleGame, onBack = {})
 }

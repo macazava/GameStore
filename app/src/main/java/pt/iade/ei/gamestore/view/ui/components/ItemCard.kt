@@ -1,6 +1,7 @@
 package pt.iade.ei.gamestore.view.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -13,11 +14,12 @@ import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Item
 
 @Composable
-fun ItemCard(item: Item) {
+fun ItemCard(item: Item, aoClicar: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable { aoClicar() }, // integração com a ModalBottomSheet
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Image(
@@ -40,5 +42,5 @@ fun ItemCard(item: Item) {
 @Composable
 fun PreviewItemCard() {
     val sampleItem = GameController.getSampleGames().first().items.first() // Cottage Living
-    ItemCard(item = sampleItem)
+    ItemCard(item = sampleItem, aoClicar = {}) // função vazia para preview
 }
