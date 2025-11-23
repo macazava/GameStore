@@ -1,4 +1,4 @@
-package pt.iade.ei.gamestore
+package pt.iade.ei.gamestore.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
