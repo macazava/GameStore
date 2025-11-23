@@ -21,9 +21,10 @@ import pt.iade.ei.gamestore.view.ui.components.GameCard
 @Composable
 //esta tela foi criada para ser chamada diretamente na MainActivity (porque não tenho a certeza se podia criar como tal uma screen na mainactivity)
 fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
+//Cria uma variável reativa para saber qual tab está selecionada (Featured, History, Profile).
     var selectedTab by remember { mutableStateOf(0) }
 
-    Scaffold(
+    Scaffold(//organiza a tela em tres partes: topbar, bottombar e o conteudo principal que neste caso é a lista de jogos
         topBar = {
             Column(
                 modifier = Modifier
@@ -65,7 +66,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
         },
         bottomBar = {
             NavigationBar {
-                NavigationBarItem(
+                NavigationBarItem(//Cada NavigationBarItem muda o selectedTab quando clicado.
                     selected = selectedTab == 0,
                     onClick = { selectedTab = 0 },
                     icon = {
@@ -104,14 +105,14 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
             }
         }
     ) { innerPadding ->
-        LazyColumn(
+        LazyColumn(//cria uma lista vertical rolável.
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(games) { game ->
+            items(games) { game ->//Para cada jogo, mostra um GameCard com imagem de fundo e nome.
                 GameCard(game = game, onClick = { onGameClick(game) })
             }
         }
