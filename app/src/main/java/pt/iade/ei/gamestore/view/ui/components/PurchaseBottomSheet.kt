@@ -62,10 +62,4 @@ fun PurchaseBottomSheet(
     }
 }
 
-
-
-
-//colocar o preview (perguntar ao professor)
-
-
-
+//colocar o preview (perguntar ao professor)...

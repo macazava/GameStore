@@ -51,7 +51,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(50.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
