@@ -53,9 +53,9 @@ fun GameCard(game: Game, onClick: () -> Unit) {
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     shadow = Shadow(
-                        color = Color.Black.copy(alpha = 10f),
+                        color = Color.Black.copy(alpha = 0.8f),
                         offset = Offset(4f, 4f),
-                        blurRadius = 2f
+                        blurRadius = 4f
                     )
                 ),
                 modifier = Modifier

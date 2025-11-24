@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,14 +30,16 @@ class MainActivity : ComponentActivity() {
         val games: List<Game> = GameController.getSampleGames()
 
         setContent {
+            val context = LocalContext.current
             MainScreen(games = games) { selectedGame ->
-                val intent = Intent(this, GameDetailActivity::class.java)
-                intent.putExtra("gameId", selectedGame.id) // envia só o ID
-                startActivity(intent)
+                val intent = Intent(context, GameDetailActivity::class.java)
+                intent.putExtra("gameId", selectedGame.id)
+                context.startActivity(intent)
             }
         }
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
