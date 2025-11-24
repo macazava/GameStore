@@ -31,34 +31,18 @@ fun PurchaseBottomSheet(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Imagem do item
             Image(
                 painter = painterResource(id = item.imageResId),
-                contentDescription = item.name,
+                contentDescription = item.name.ifBlank { "Imagem do item" },
                 modifier = Modifier
                     .size(72.dp)
                     .align(Alignment.Start)
             )
 
-            // Nome do item
-            Text(
-                text = item.name,
-                style = MaterialTheme.typography.titleMedium
-            )
+            Text(text = item.name.ifBlank { "Item sem nome" }, style = MaterialTheme.typography.titleMedium)
+            Text(text = item.description.ifBlank { "Descrição não disponível." }, style = MaterialTheme.typography.bodyMedium)
+            Text(text = "Preço: ${String.format("%.2f", item.price)} €", style = MaterialTheme.typography.titleSmall)
 
-            // Descrição completa
-            Text(
-                text = item.description,
-                style = MaterialTheme.typography.bodyMedium
-            )
-
-            // Preço
-            Text(
-                text = "Preço: ${String.format("%.2f", item.price)} €",
-                style = MaterialTheme.typography.titleSmall
-            )
-
-            // Botão de compra
             Button(
                 onClick = {
                     Toast.makeText(
@@ -77,6 +61,7 @@ fun PurchaseBottomSheet(
         }
     }
 }
+
 
 
 

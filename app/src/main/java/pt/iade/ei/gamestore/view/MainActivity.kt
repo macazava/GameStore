@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Game
 import pt.iade.ei.gamestore.controller.GameController
-import pt.iade.ei.gamestore.view.ui.GameDetailActivity
+import pt.iade.ei.gamestore.view.GameDetailActivity
 import pt.iade.ei.gamestore.view.ui.components.GameCard
 
 class MainActivity : ComponentActivity() {
@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val context = LocalContext.current
             MainScreen(games = games) { selectedGame ->
+                println("Clicado: ${selectedGame.name} com ID ${selectedGame.id}")
                 val intent = Intent(context, GameDetailActivity::class.java)
                 intent.putExtra("gameId", selectedGame.id)
                 context.startActivity(intent)
@@ -40,12 +41,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
-    var selectedTab by remember { mutableStateOf(0) }
-
     Scaffold(
         topBar = {
             Column(
@@ -53,9 +51,8 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                Spacer(modifier = Modifier.height(24.dp)) // espaço acima
+                Spacer(modifier = Modifier.height(24.dp))
 
-                // Ícones alinhados à direita
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End,
@@ -74,23 +71,22 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(50.dp)) // espaço entre ícones e título
+                Spacer(modifier = Modifier.height(50.dp))
 
-                // Nome da empresa alinhado à esquerda
                 Text(
                     text = "PlayBloom",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.align(Alignment.Start)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp)) // espaço abaixo
+                Spacer(modifier = Modifier.height(16.dp))
             }
         },
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
-                    selected = selectedTab == 0,
-                    onClick = { selectedTab = 0 },
+                    selected = false, // ícone estático
+                    onClick = {},     // sem ação
                     icon = {
                         Image(
                             painter = painterResource(id = R.drawable.icon_featured),
@@ -101,8 +97,8 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                     label = { Text("Featured") }
                 )
                 NavigationBarItem(
-                    selected = selectedTab == 1,
-                    onClick = { selectedTab = 1 },
+                    selected = false,
+                    onClick = {},
                     icon = {
                         Image(
                             painter = painterResource(id = R.drawable.icon_history),
@@ -113,8 +109,8 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                     label = { Text("History") }
                 )
                 NavigationBarItem(
-                    selected = selectedTab == 2,
-                    onClick = { selectedTab = 2 },
+                    selected = false,
+                    onClick = {},
                     icon = {
                         Image(
                             painter = painterResource(id = R.drawable.icon_profile),

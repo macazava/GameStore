@@ -1,8 +1,13 @@
-package pt.iade.ei.gamestore.view.ui
+package pt.iade.ei.gamestore.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import pt.iade.ei.gamestore.controller.GameController
+import pt.iade.ei.gamestore.model.Game
+import pt.iade.ei.gamestore.view.ui.components.GameDetailCard
+import pt.iade.ei.gamestore.view.ui.components.ItemCard
+import pt.iade.ei.gamestore.view.ui.components.PurchaseBottomSheet
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,25 +20,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
-import pt.iade.ei.gamestore.controller.GameController
-import pt.iade.ei.gamestore.model.Game
 import pt.iade.ei.gamestore.model.Item
-import pt.iade.ei.gamestore.view.ui.components.GameDetailCard
-import pt.iade.ei.gamestore.view.ui.components.ItemCard
-import pt.iade.ei.gamestore.view.ui.components.PurchaseBottomSheet
 
 class GameDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val gameId = intent.getIntExtra("gameId", -1)
+        // Proteção extra contra null ou ID inválido
+        val gameId = intent?.getIntExtra("gameId", -1) ?: -1
         val game = GameController.getSampleGames().find { it.id == gameId }
 
         setContent {
             if (game != null) {
                 GameDetailScreen(game = game, onBack = { finish() })
             } else {
-                ErrorScreen("Jogo não recebido.")
+                ErrorScreen("Jogo não recebido ou ID inválido.")
             }
         }
     }
@@ -121,6 +122,6 @@ fun ErrorScreen(message: String) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailScreen() {
-    val sampleGame = GameController.getSampleGames().first() // The Sims 4
+    val sampleGame = GameController.getSampleGames().first()
     GameDetailScreen(game = sampleGame, onBack = {})
 }

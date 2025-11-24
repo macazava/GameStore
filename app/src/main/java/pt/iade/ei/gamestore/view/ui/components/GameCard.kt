@@ -25,18 +25,16 @@ import androidx.compose.ui.geometry.Offset
 
 
 @Composable
-fun GameCard(game: Game, onClick: () -> Unit) {
+fun GameCard(game: Game, onClick: (Game) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
-            .clickable { onClick() },
+            .clickable { onClick(game) }, // passa o game clicado
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
-        //optei por Box para poder sobrepor elementos (imagem e texto)
         Box(modifier = Modifier.fillMaxSize()) {
-            // Imagem como fundo
             Image(
                 painter = painterResource(id = game.imageResId),
                 contentDescription = game.name,
@@ -46,7 +44,6 @@ fun GameCard(game: Game, onClick: () -> Unit) {
                     .clip(RoundedCornerShape(16.dp))
             )
 
-            // Nome do jogo no canto inferior esquerdo
             Text(
                 text = game.name,
                 style = MaterialTheme.typography.titleLarge.copy(
@@ -66,6 +63,7 @@ fun GameCard(game: Game, onClick: () -> Unit) {
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameCard() {
@@ -76,5 +74,5 @@ fun PreviewGameCard() {
         description = "Simulação de vida criativa.",
         items = emptyList()
     )
-    GameCard(game = sampleGame, onClick = {})
+    GameCard(game = sampleGame, onClick = { println("Clicado: ${it.name}") })
 }

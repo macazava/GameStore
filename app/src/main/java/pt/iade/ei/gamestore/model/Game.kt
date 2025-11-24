@@ -5,5 +5,5 @@ data class Game(
     val name: String,
     val imageResId: Int,
     val description: String,
-    val items: List<Item>
+    val items: List<Item>//Permite carregar os itens compraveis na GameDetailActivity
 )

@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Game
+import pt.iade.ei.gamestore.R
 
 @Composable
 fun GameDetailCard(game: Game) {
@@ -20,15 +21,18 @@ fun GameDetailCard(game: Game) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        // Imagem do jogo
         Image(
             painter = painterResource(id = game.imageResId),
-            contentDescription = game.name,
+            contentDescription = game.name.ifBlank { "Imagem do jogo" },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
         )
+
+        // Descrição
         Text(
-            text = game.description,
+            text = game.description.ifBlank { "Descrição não disponível." },
             style = MaterialTheme.typography.bodyMedium
         )
     }
