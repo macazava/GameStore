@@ -3,15 +3,22 @@ package pt.iade.ei.gamestore.view.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Item
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.layout.ContentScale
+
 
 @Composable
 fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
@@ -20,21 +27,49 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
             .fillMaxWidth()
             .padding(16.dp)
             .clickable { aoClicar(item) }, // passa o item clicado
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            painter = painterResource(id = item.imageResId),
-            contentDescription = item.name.ifBlank { "Imagem do item" },
-            modifier = Modifier.size(64.dp)
-        )
+        // Imagem quadrada com bordas arredondadas
+        Box(
+            modifier = Modifier
+                .size(64.dp)
+                .clip(RoundedCornerShape(12.dp))
+        ) {
+            Image(
+                painter = painterResource(id = item.imageResId),
+                contentDescription = "Imagem cortada à direita",
+                modifier = Modifier
+                    .size(160.dp)
+                    .aspectRatio(1f)
+                    .clip(RoundedCornerShape(16.dp)),
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.CenterEnd // foca na parte direita da imagem
+            )
+        }
+
+        // Nome, descrição condensada e preço
         Column(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(text = item.name, style = MaterialTheme.typography.titleMedium)
-            Text(text = item.description.ifBlank { "Descrição não disponível." }, style = MaterialTheme.typography.bodySmall)
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp)
+            )
+
+            Text(
+                text = item.description.ifBlank { "Descrição não disponível." },
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 14.sp),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            Text(
+                text = String.format("%.2f €", item.price),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+            )
         }
-        Text(text = String.format("%.2f €", item.price), style = MaterialTheme.typography.bodyMedium)
     }
 }
 
