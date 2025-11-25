@@ -19,6 +19,7 @@ import pt.iade.ei.gamestore.model.Item
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 
 @Composable
@@ -62,9 +63,16 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
                 overflow = TextOverflow.Ellipsis
             )
 
+            Spacer(modifier = Modifier.height(10.dp))
+
+
             Text(
-                text = String.format("%.2f €", item.price),
-                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+                text = String.format(" $%.2f ", item.price),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.End
             )
         }
     }

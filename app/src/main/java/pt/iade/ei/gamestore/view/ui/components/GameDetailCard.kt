@@ -46,8 +46,8 @@ fun GameDetailCard(game: Game) {
                 "."
             },
             style = MaterialTheme.typography.bodyLarge.copy(
-                fontSize = 10.sp,
-                lineHeight = 15.sp
+                fontSize = 14.sp,
+                lineHeight = 17.sp
             ),
             textAlign = TextAlign.Start,
             modifier = Modifier.weight(1f)
