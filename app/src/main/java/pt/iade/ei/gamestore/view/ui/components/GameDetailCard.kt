@@ -29,7 +29,7 @@ fun GameDetailCard(game: Game) {
     ) {
         Image(
             painter = painterResource(id = game.imageResId),
-            contentDescription = "Imagem cortada à direita",
+            contentDescription = "Imagem do jogo",
             modifier = Modifier
                 .size(160.dp)
                 .aspectRatio(1f)

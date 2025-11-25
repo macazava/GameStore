@@ -3,10 +3,13 @@ package pt.iade.ei.gamestore.view.ui.components
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -29,37 +32,69 @@ fun PurchaseBottomSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Image(
-                painter = painterResource(id = item.imageResId),
-                contentDescription = item.name.ifBlank { "Imagem do item" },
-                modifier = Modifier
-                    .size(72.dp)
-                    .align(Alignment.Start)
+            // Nome acima da imagem
+            Text(
+                text = item.name.ifBlank { "Item sem nome" },
+                style = MaterialTheme.typography.titleLarge
             )
 
-            Text(text = item.name.ifBlank { "Item sem nome" }, style = MaterialTheme.typography.titleMedium)
-            Text(text = item.description.ifBlank { "Descrição não disponível." }, style = MaterialTheme.typography.bodyMedium)
-            Text(text = "Preço: ${String.format("%.2f", item.price)} €", style = MaterialTheme.typography.titleSmall)
-
-            Button(
-                onClick = {
-                    Toast.makeText(
-                        contexto,
-                        "Acabou de comprar o item ${item.name} por ${String.format("%.2f", item.price)} €",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    aoFechar()
-                },
-                modifier = Modifier.fillMaxWidth()
+            // Imagem à esquerda e descrição à direita
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.Top
             ) {
-                Text("Comprar com 1 clique")
+                Image(
+                    painter = painterResource(id = item.imageResId),
+                    contentDescription = "Imagem do item",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .aspectRatio(1f)
+                        .clip(RoundedCornerShape(16.dp)),
+                    contentScale = ContentScale.Crop
+                )
+
+                Text(
+                    text = item.description.ifBlank { "Descrição não disponível." },
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.weight(1f)
+                )
             }
+
+            // Preço e botão na parte inferior
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "$ ${String.format("%.2f", item.price)}",
+                    style = MaterialTheme.typography.titleMedium
+                )
+
+                Spacer(modifier = Modifier.width(15.dp)) // espaço entre preço e botão
+
+                Button(
+                    onClick = {
+                        Toast.makeText(
+                            contexto,
+                            "Acabou de comprar o item ${item.name} por $${String.format("%.2f", item.price)}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        aoFechar()
+                    }
+                ) {
+                    Text("Buy with 1-click")
+                }
+            }
+
 
             Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
+
 
 //colocar o preview (perguntar ao professor)...

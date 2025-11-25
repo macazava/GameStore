@@ -34,7 +34,7 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
     ) {
             Image(
                 painter = painterResource(id = item.imageResId),
-                contentDescription = "Imagem cortada à direita",
+                contentDescription = "Imagem do item",
                 modifier = Modifier
                     .size(110.dp)
                     .aspectRatio(1f)
