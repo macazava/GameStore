@@ -18,6 +18,7 @@ import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Item
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 
 
 @Composable
@@ -30,23 +31,16 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Imagem quadrada com bordas arredondadas
-        Box(
-            modifier = Modifier
-                .size(64.dp)
-                .clip(RoundedCornerShape(12.dp))
-        ) {
             Image(
                 painter = painterResource(id = item.imageResId),
                 contentDescription = "Imagem cortada à direita",
                 modifier = Modifier
-                    .size(160.dp)
+                    .size(110.dp)
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(16.dp)),
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.CenterEnd // foca na parte direita da imagem
+                contentScale = ContentScale.Crop
             )
-        }
+
 
         // Nome, descrição condensada e preço
         Column(
@@ -55,7 +49,10 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
         ) {
             Text(
                 text = item.name,
-                style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp)
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
             )
 
             Text(
