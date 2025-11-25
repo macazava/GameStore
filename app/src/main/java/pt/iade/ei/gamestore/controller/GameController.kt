@@ -26,7 +26,7 @@ object GameController {
         )
 
         return listOf(
-            Game(1, "The Sims 4", R.drawable.thesims4_gameimage, "Simulação de vida, moda e decoração criativa.", simsItems),
+            Game(1, "The Sims 4", R.drawable.thesims4_gameimage, "The Sims 4 é um jogo de simulação de vida gratuito onde os jogadores criam e controlam pessoas (Sims). O jogo permite personalizar a aparência, personalidade e aspirações dos Sims, construir e decorar casas, e guiar os Sims através de carreiras, relacionamentos e momentos da vida, tanto bons quanto maus. É possível explorar mundos virtuais, visitar locais e participar de eventos. ", simsItems),
             Game(2, "Horizon Forbidden West", R.drawable.horizonforbiddenwest_gameimage, "Ação e exploração com protagonista feminina corajosa.", horizonItems),
             Game(3, "Animal Crossing: New Horizons", R.drawable.animalcrossingnewhorizons_gameimage, "Cria e decora a tua ilha com amigos adoráveis.", animalCrossingItems)
         )
