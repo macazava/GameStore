@@ -54,11 +54,15 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
 
     Scaffold(
         topBar = {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                IconButton(
-                    onClick = onBack,
-                    modifier = Modifier.align(Alignment.CenterStart)
-                ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                // Ícone de voltar
+                IconButton(onClick = onBack) {
                     Image(
                         painter = painterResource(id = R.drawable.icon_back),
                         contentDescription = "Voltar",
@@ -66,16 +70,15 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
                     )
                 }
 
+                // Nome do jogo, alinhado à esquerda após a seta
                 Text(
                     text = game.name,
                     style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.weight(1f) // ocupa espaço restante
                 )
 
-                IconButton(
-                    onClick = { /* ação futura */ },
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                ) {
+                // Ícone de favorito à direita
+                IconButton(onClick = { /* ação futura */ }) {
                     Image(
                         painter = painterResource(id = R.drawable.icon_heart),
                         contentDescription = "Favorito",
@@ -84,12 +87,13 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
                 }
             }
         }
-    ) { innerPadding ->
+    )
+    { innerPadding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             item {
                 GameDetailCard(game = game)
@@ -97,8 +101,8 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
 
             item {
                 Text(
-                    text = "Itens compráveis",
-                    style = MaterialTheme.typography.titleMedium,
+                    text = "Purchasable Items",
+                    style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                         .padding(top = 8.dp)
