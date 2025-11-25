@@ -8,7 +8,7 @@ object GameController {
 
     fun getSampleGames(): List<Game> {
         val simsItems = listOf(
-            Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"Expansão rural com animais e agricultura.", 39.99),
+            Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
             Item(2, "Fashion Street", R.drawable.kitfashionstreet_itemimage, "Roupas urbanas inspiradas em Mumbai.", 4.99),
             Item(3, "Blooming Rooms", R.drawable.kitbloomingrooms_itemimage, "Decoração com plantas e ambientes verdes.", 4.99)
         )
