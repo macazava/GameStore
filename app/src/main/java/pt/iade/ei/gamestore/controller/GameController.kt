@@ -27,8 +27,8 @@ object GameController {
 
         return listOf(
             Game(1, "The Sims 4", R.drawable.thesims4_gameimage, "The Sims 4 é um jogo de simulação de vida gratuito onde os jogadores criam e controlam Sims. É possível personalizar personagens e casas, gerir as suas carreiras e relacionamentos, e explorar mundos virtuais repletos de eventos.", simsItems),
-            Game(2, "Horizon Forbidden West", R.drawable.horizonforbiddenwest_gameimage, "Ação e exploração com protagonista feminina corajosa.", horizonItems),
-            Game(3, "Animal Crossing: New Horizons", R.drawable.animalcrossingnewhorizons_gameimage, "Cria e decora a tua ilha com amigos adoráveis.", animalCrossingItems)
+            Game(2, "Horizon Forbidden West", R.drawable.horizonforbiddenwest_gameimage, "Horizon Forbidden West é um jogo de ação e aventura em mundo aberto onde os jogadores acompanham Aloy num futuro pós‑apocalíptico. Explora territórios vastos, enfrenta máquinas colossais e descobre segredos que podem salvar a humanidade.", horizonItems),
+            Game(3, "Animal Crossing: New Horizons", R.drawable.animalcrossingnewhorizons_gameimage, "Animal Crossing: New Horizons é um jogo de simulação social onde os jogadores criam e personalizam uma ilha paradisíaca. Podem decorar casas, cultivar e interagir com vizinhos, construindo uma comunidade relaxante e divertida.", animalCrossingItems)
         )
     }
 }
