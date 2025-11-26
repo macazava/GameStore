@@ -44,10 +44,12 @@ class GameDetailActivity : ComponentActivity() {
 @Composable
 fun GameDetailScreen(game: Game, onBack: () -> Unit) {
     var itemSelecionado by remember { mutableStateOf<Item?>(null) }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true) // ✅ estado criado aqui
 
     if (itemSelecionado != null) {
         PurchaseBottomSheet(
             item = itemSelecionado!!,
+            sheetState = sheetState, // ✅ estado passado como parâmetro
             aoFechar = { itemSelecionado = null }
         )
     }
@@ -123,9 +125,13 @@ fun ErrorScreen(message: String) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailScreen() {
     val sampleGame = GameController.getSampleGames().first()
+    // Não inicializamos itemSelecionado aqui → não aparece a BottomSheet
     GameDetailScreen(game = sampleGame, onBack = {})
 }
+
+

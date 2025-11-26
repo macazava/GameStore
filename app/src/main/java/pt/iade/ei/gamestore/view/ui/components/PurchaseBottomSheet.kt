@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,14 +22,14 @@ import pt.iade.ei.gamestore.model.Item
 @Composable
 fun PurchaseBottomSheet(
     item: Item,
+    sheetState: SheetState,   // ✅ estado vem de fora
     aoFechar: () -> Unit
 ) {
     val contexto = LocalContext.current
-    val estadoSheet = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     ModalBottomSheet(
         onDismissRequest = aoFechar,
-        sheetState = estadoSheet
+        sheetState = sheetState
     ) {
         Column(
             modifier = Modifier
@@ -92,18 +93,33 @@ fun PurchaseBottomSheet(
                 }
             }
 
-
             Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun PreviewPurchaseBottomSheet(){
+    val previewState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    // Força a sheet a abrir na preview
+    LaunchedEffect(Unit) {
+        previewState.show()
+    }
+
     PurchaseBottomSheet(
-        Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
+        Item(
+            1,
+            "Cottage Living",
+            R.drawable.expansionpackcottageliving_itemimage,
+            "The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.",
+            39.99
+        ),
+        sheetState = previewState,
         aoFechar = {}
     )
 }
+
