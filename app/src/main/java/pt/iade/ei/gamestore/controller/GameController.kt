@@ -14,9 +14,9 @@ object GameController {
         )
 
         val horizonItems = listOf(
-            Item(4, "Nora Legacy Outfit", R.drawable.outfitnoralegacy_itemimage, "Roupa especial inspirada na tribo de Aloy.", 9.99),
-            Item(5, "Elite Hunter Pack", R.drawable.weaponpackelitehunter_itemimage, "Armas com atributos melhorados para combate.", 14.99),
-            Item(6, "Burning Shores Expansion", R.drawable.expansionburningshores_itemimage, "Continuação da história com novas áreas e inimigos.", 19.99)
+            Item(4, "Nora Legacy Outfit", R.drawable.outfitnoralegacy_itemimage, "Nora Legacy Outfit é um traje especial em Horizon Forbidden West que celebra as origens de Aloy na tribo Nora. Oferece um visual icónico e tradicional, permitindo aos jogadores personalizar a protagonista com um estilo marcante e cheio de identidade.", 9.99),
+            Item(5, "Elite Hunter Pack", R.drawable.weaponpackelitehunter_itemimage, "Elite Hunter Pack é um conjunto de recursos e equipamentos em Horizon Forbidden West que ajuda os jogadores a enfrentar máquinas e desafios mais difíceis. Inclui munições, poções e materiais raros, oferecendo vantagens estratégicas para caçadas intensas.", 14.99),
+            Item(6, "Burning Shores Expansion", R.drawable.expansionburningshores_itemimage, "Burning Shores é uma expansão de Horizon Forbidden West que leva Aloy a explorar novas terras devastadas por vulcões e criaturas colossais. Com missões inéditas, ambientes deslumbrantes e inimigos poderosos, expande a aventura principal com conteúdos épicos e desafiadores.", 19.99)
         )
 
         val animalCrossingItems = listOf(
