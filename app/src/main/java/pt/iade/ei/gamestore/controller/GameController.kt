@@ -14,15 +14,15 @@ object GameController {
         )
 
         val horizonItems = listOf(
-            Item(4, "Nora Legacy Outfit", R.drawable.outfitnoralegacy_itemimage, "Nora Legacy Outfit é um traje especial em Horizon Forbidden West que celebra as origens de Aloy na tribo Nora. Oferece um visual icónico e tradicional, permitindo aos jogadores personalizar a protagonista com um estilo marcante e cheio de identidade.", 9.99),
-            Item(5, "Elite Hunter Pack", R.drawable.weaponpackelitehunter_itemimage, "Elite Hunter Pack é um conjunto de recursos e equipamentos em Horizon Forbidden West que ajuda os jogadores a enfrentar máquinas e desafios mais difíceis. Inclui munições, poções e materiais raros, oferecendo vantagens estratégicas para caçadas intensas.", 14.99),
-            Item(6, "Burning Shores Expansion", R.drawable.expansionburningshores_itemimage, "Burning Shores é uma expansão de Horizon Forbidden West que leva Aloy a explorar novas terras devastadas por vulcões e criaturas colossais. Com missões inéditas, ambientes deslumbrantes e inimigos poderosos, expande a aventura principal com conteúdos épicos e desafiadores.", 19.99)
+            Item(4, "Nora Legacy Outfit", R.drawable.outfitnoralegacy_itemimage, "Nora Legacy Outfit é um traje especial que celebra as origens de Aloy na tribo Nora. Oferece um visual icónico e tradicional, permitindo aos jogadores personalizar a protagonista com um estilo marcante e cheio de identidade.", 9.99),
+            Item(5, "Elite Hunter Pack", R.drawable.weaponpackelitehunter_itemimage, "Elite Hunter Pack é um conjunto de recursos e equipamentos que ajuda os jogadores a enfrentar máquinas e desafios mais difíceis. Inclui munições, poções e materiais raros, oferecendo vantagens estratégicas para caçadas intensas.", 14.99),
+            Item(6, "Burning Shores Expansion", R.drawable.expansionburningshores_itemimage, "Burning Shores é uma expansão que leva Aloy a explorar novas terras devastadas por vulcões e criaturas colossais. Com missões inéditas, ambientes deslumbrantes e inimigos poderosos, expande a aventura principal com conteúdos épicos e desafiadores.", 19.99)
         )
 
         val animalCrossingItems = listOf(
-            Item(7, "Happy Home Paradise", R.drawable.animalcrossingexpansion_itemimage, "Cria casas personalizadas para os habitantes.", 24.99),
-            Item(8, "Sanrio Furniture Pack", R.drawable.furniturepacksanriocollaboration_itemimage, "Móveis e roupas inspiradas em Hello Kitty.", 5.99),
-            Item(9, "Spring Fashion Bundle", R.drawable.outfitbundlespringfashion_itemimage, "Roupas florais e acessórios para primavera.", 3.99)
+            Item(7, "Happy Home Paradise", R.drawable.animalcrossingexpansion_itemimage, "Happy Home Paradise é uma expansão de design onde os jogadores podem criar casas de férias personalizadas para diferentes personagens. Oferece novas ferramentas de decoração e permite explorar a criatividade em ambientes únicos.", 24.99),
+            Item(8, "Sanrio Furniture Pack", R.drawable.furniturepacksanriocollaboration_itemimage, "Sanrio Furniture Pack é um conjunto de mobiliário temático inspirado em personagens icónicas como Hello Kitty e My Melody. Adiciona peças adoráveis e coloridas que tornam qualquer ilha mais divertida e charmosa.", 5.99),
+            Item(9, "Spring Fashion Bundle", R.drawable.outfitbundlespringfashion_itemimage, "Spring Fashion Bundle é um pacote de roupas sazonais que traz estilos leves e coloridos inspirados na primavera. Permite vestir os personagens com novos conjuntos e acessórios para celebrar a estação.", 3.99)
         )
 
         return listOf(
