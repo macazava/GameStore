@@ -8,9 +8,9 @@ object GameController {
 
     fun getSampleGames(): List<Game> {
         val simsItems = listOf(
-            Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
-            Item(2, "Fashion Street", R.drawable.kitfashionstreet_itemimage, "Roupas urbanas inspiradas em Mumbai.", 4.99),
-            Item(3, "Blooming Rooms", R.drawable.kitbloomingrooms_itemimage, "Decoração com plantas e ambientes verdes.", 4.99)
+            Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
+            Item(2, "Fashion Street", R.drawable.kitfashionstreet_itemimage, "Fashion Street é um kit de moda para The Sims 4 que adiciona roupas e acessórios inspirados na cultura urbana de Mumbai. Com cores vivas, padrões tradicionais e silhuetas modernas, permite criar looks únicos e expressivos para os teus Sims.", 4.99),
+            Item(3, "Blooming Rooms", R.drawable.kitbloomingrooms_itemimage, "Blooming Rooms é um kit de decoração para The Sims 4 que adiciona plantas e elementos naturais ao lar dos Sims. Com uma variedade de vasos, folhagens e arranjos, permite criar ambientes acolhedores e cheios de vida.", 4.99)
         )
 
         val horizonItems = listOf(
