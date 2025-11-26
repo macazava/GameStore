@@ -12,7 +12,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Item
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,4 +99,11 @@ fun PurchaseBottomSheet(
 }
 
 
-//colocar o preview (perguntar ao professor)...
+@Preview
+@Composable
+fun PreviewPurchaseBottomSheet(){
+    PurchaseBottomSheet(
+        Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
+        aoFechar = {}
+    )
+}
