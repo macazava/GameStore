@@ -58,7 +58,7 @@ fun GameDetailCard(game: Game) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailCard() {
-    val sampleGame = GameController.getSampleGames().first()
+    val sampleGame = GameController.getGamesList().first()
     GameDetailCard(game = sampleGame)
 }
 

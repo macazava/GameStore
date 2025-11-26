@@ -6,7 +6,7 @@ import pt.iade.ei.gamestore.R
 
 object GameController {
 
-    fun getSampleGames(): List<Game> {
+    fun getGamesList(): List<Game> {
         val simsItems = listOf(
             Item(1,"Cottage Living",R.drawable.expansionpackcottageliving_itemimage,"The Sims 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),
             Item(2, "Fashion Street", R.drawable.kitfashionstreet_itemimage, "Fashion Street é um kit de moda para The Sims 4 que adiciona roupas e acessórios inspirados na cultura urbana de Mumbai. Com cores vivas, padrões tradicionais e silhuetas modernas, permite criar looks únicos e expressivos para os teus Sims.", 4.99),

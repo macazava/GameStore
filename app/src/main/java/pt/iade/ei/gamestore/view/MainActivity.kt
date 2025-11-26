@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val games: List<Game> = GameController.getSampleGames()
+        val games: List<Game> = GameController.getGamesList()
 
         setContent {
             val context = LocalContext.current
@@ -152,6 +152,6 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewMainScreen() {
-    val sampleGames = GameController.getSampleGames()
+    val sampleGames = GameController.getGamesList()
     MainScreen(games = sampleGames, onGameClick = {})
 }

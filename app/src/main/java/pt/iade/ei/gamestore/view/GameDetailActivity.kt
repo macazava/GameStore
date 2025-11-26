@@ -28,7 +28,7 @@ class GameDetailActivity : ComponentActivity() {
 
         // Proteção extra contra null ou ID inválido
         val gameId = intent?.getIntExtra("gameId", -1) ?: -1
-        val game = GameController.getSampleGames().find { it.id == gameId }
+        val game = GameController.getGamesList().find { it.id == gameId }
 
         setContent {
             if (game != null) {
@@ -129,7 +129,7 @@ fun ErrorScreen(message: String) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailScreen() {
-    val sampleGame = GameController.getSampleGames().first()
+    val sampleGame = GameController.getGamesList().first()
     // Não inicializamos itemSelecionado aqui → não aparece a BottomSheet
     GameDetailScreen(game = sampleGame, onBack = {})
 }

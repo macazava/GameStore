@@ -81,6 +81,6 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewItemCard() {
-    val sampleItem = GameController.getSampleGames().first().items.first() // Cottage Living
+    val sampleItem = GameController.getGamesList().first().items.first() // Cottage Living
     ItemCard(item = sampleItem, aoClicar = { println("Clicado: ${it.name}") })
 }

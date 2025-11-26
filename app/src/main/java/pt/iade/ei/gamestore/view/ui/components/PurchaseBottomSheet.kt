@@ -22,7 +22,7 @@ import pt.iade.ei.gamestore.model.Item
 @Composable
 fun PurchaseBottomSheet(
     item: Item,
-    sheetState: SheetState,   // ✅ estado vem de fora
+    sheetState: SheetState,   // estado vem de fora
     aoFechar: () -> Unit
 ) {
     val contexto = LocalContext.current
