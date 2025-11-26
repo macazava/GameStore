@@ -88,7 +88,7 @@ fun PurchaseBottomSheet(
                         aoFechar()
                     }
                 ) {
-                    Text("Buy with 1-click")
+                    Text("Comprar com 1-click")
                 }
             }
 

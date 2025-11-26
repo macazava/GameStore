@@ -101,7 +101,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
 
             item {
                 Text(
-                    text = "Purchasable Items",
+                    text = "Itens Compráveis",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)

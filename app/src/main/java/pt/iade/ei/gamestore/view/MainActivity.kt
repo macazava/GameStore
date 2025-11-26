@@ -77,7 +77,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                 Spacer(modifier = Modifier.height(50.dp))
 
                 Text(
-                    text = "PlayBloom",
+                    text = "PlayBloom", //nome da 'empresa'
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.align(Alignment.Start)
                 )
@@ -106,7 +106,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                         }
                     }
                     ,
-                    label = { Text("Featured") }
+                    label = { Text("Destaque") }
                 )
                 NavigationBarItem(
                     selected = false,
@@ -118,7 +118,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    label = { Text("History") }
+                    label = { Text("Histórico") }
                 )
                 NavigationBarItem(
                     selected = false,
@@ -130,7 +130,7 @@ fun MainScreen(games: List<Game>, onGameClick: (Game) -> Unit) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    label = { Text("Profile") }
+                    label = { Text("Perfil") }
                 )
             }
         }
