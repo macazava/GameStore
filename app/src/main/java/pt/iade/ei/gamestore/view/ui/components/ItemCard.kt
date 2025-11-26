@@ -32,8 +32,9 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-            Image(
-                painter = painterResource(id = item.imageResId),
+        val imageRes = GameController.getImageFromUrl(item.imageUrl)
+        Image(
+                painter = painterResource(id = imageRes),
                 contentDescription = "Imagem do item",
                 modifier = Modifier
                     .size(110.dp)

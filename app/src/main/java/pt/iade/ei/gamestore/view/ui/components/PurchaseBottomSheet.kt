@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
+import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Item
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,8 +50,9 @@ fun PurchaseBottomSheet(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.Top
             ) {
+                val imageRes = GameController.getImageFromUrl(item.imageUrl)
                 Image(
-                    painter = painterResource(id = item.imageResId),
+                    painter = painterResource(id = imageRes),
                     contentDescription = "Imagem do item",
                     modifier = Modifier
                         .size(100.dp)
@@ -114,7 +116,7 @@ fun PreviewPurchaseBottomSheet(){
         Item(
             1,
             "Cottage Living",
-            R.drawable.expansionpackcottageliving_itemimage,
+            "https://fake.api/images/cottageliving",
             "The Sims™ 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.",
             39.99
         ),

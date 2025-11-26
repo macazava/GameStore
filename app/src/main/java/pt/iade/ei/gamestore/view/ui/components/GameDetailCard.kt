@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.gamestore.controller.GameController
+import pt.iade.ei.gamestore.controller.GameController   // ✅ importa o controller
 import pt.iade.ei.gamestore.model.Game
 
 @Composable
@@ -27,8 +27,11 @@ fun GameDetailCard(game: Game) {
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.Top
     ) {
+        // usa a função do controller para converter URL em drawable
+        val imageRes = GameController.getImageFromUrl(game.imageUrl)
+
         Image(
-            painter = painterResource(id = game.imageResId),
+            painter = painterResource(id = imageRes),
             contentDescription = "Imagem do jogo",
             modifier = Modifier
                 .size(160.dp)
@@ -38,13 +41,9 @@ fun GameDetailCard(game: Game) {
             alignment = Alignment.CenterEnd // foca na parte direita da imagem
         )
 
-
-
         // Texto à direita da imagem
         Text(
-            text = game.description.ifBlank {
-                "."
-            },
+            text = game.description.ifBlank { "." },
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 lineHeight = 17.sp
@@ -58,7 +57,14 @@ fun GameDetailCard(game: Game) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailCard() {
-    val sampleGame = GameController.getGamesList().first()
+    val sampleGame = Game(
+        1,
+        "The Sims 4",
+        "https://fake.api/images/thesims4",
+        "The Sims 4 é um jogo de simulação de vida gratuito onde os jogadores criam e controlam Sims. É possível personalizar personagens e casas, gerir as suas carreiras e relacionamentos, e explorar mundos virtuais repletos de eventos.",
+        emptyList()
+    )
     GameDetailCard(game = sampleGame)
 }
+
 

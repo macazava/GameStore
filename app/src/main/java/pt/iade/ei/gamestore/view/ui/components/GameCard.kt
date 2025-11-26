@@ -22,6 +22,7 @@ import pt.iade.ei.gamestore.model.Game
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.geometry.Offset
+import pt.iade.ei.gamestore.controller.GameController
 
 
 @Composable
@@ -35,8 +36,9 @@ fun GameCard(game: Game, onClick: (Game) -> Unit) {
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
+            val imageRes = GameController.getImageFromUrl(game.imageUrl)
             Image(
-                painter = painterResource(id = game.imageResId),
+                painter = painterResource(id = imageRes),
                 contentDescription = game.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -68,11 +70,11 @@ fun GameCard(game: Game, onClick: (Game) -> Unit) {
 @Composable
 fun PreviewGameCard() {
     val sampleGame = Game(
-        id = 1,
-        name = "The Sims 4",
-        imageResId = R.drawable.thesims4_gameimage,
-        description = "Simulação de vida criativa.",
-        items = emptyList()
-    )
+        1,
+        "The Sims 4",
+        "https://fake.api/images/thesims4",
+        "The Sims 4 é um jogo de simulação de vida gratuito onde os jogadores criam e controlam Sims. É possível personalizar personagens e casas, gerir as suas carreiras e relacionamentos, e explorar mundos virtuais repletos de eventos.",
+        emptyList()
+        )
     GameCard(game = sampleGame, onClick = { println("Clicado: ${it.name}") })
 }
