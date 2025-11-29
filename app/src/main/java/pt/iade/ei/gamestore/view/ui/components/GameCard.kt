@@ -17,7 +17,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Game
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -27,15 +26,18 @@ import pt.iade.ei.gamestore.controller.GameController
 
 @Composable
 fun GameCard(game: Game, onClick: (Game) -> Unit) {
+    //estrutura do card
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
-            .clickable { onClick(game) }, // passa o game clicado
+            .clickable { onClick(game) }, //passa o game clicado
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
+        //conteudo do card
         Box(modifier = Modifier.fillMaxSize()) {
+            // usa a função do controller para converter URL em drawable
             val imageRes = GameController.getImageFromUrl(game.imageUrl)
             Image(
                 painter = painterResource(id = imageRes),
@@ -45,7 +47,6 @@ fun GameCard(game: Game, onClick: (Game) -> Unit) {
                     .fillMaxSize()
                     .clip(RoundedCornerShape(16.dp))
             )
-
             Text(
                 text = game.name,
                 style = MaterialTheme.typography.titleLarge.copy(
@@ -76,5 +77,5 @@ fun PreviewGameCard() {
         "The Sims 4 é um jogo de simulação de vida gratuito onde os jogadores criam e controlam Sims. É possível personalizar personagens e casas, gerir as suas carreiras e relacionamentos, e explorar mundos virtuais repletos de eventos.",
         emptyList()
         )
-    GameCard(game = sampleGame, onClick = { println("Clicado: ${it.name}") })
+    GameCard(game = sampleGame, onClick = { })
 }

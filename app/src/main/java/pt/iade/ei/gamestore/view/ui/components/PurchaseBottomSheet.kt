@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Item
 
@@ -23,7 +22,7 @@ import pt.iade.ei.gamestore.model.Item
 @Composable
 fun PurchaseBottomSheet(
     item: Item,
-    sheetState: SheetState,   // estado vem de fora
+    sheetState: SheetState, // estado vem de fora
     aoFechar: () -> Unit
 ) {
     val contexto = LocalContext.current
@@ -40,7 +39,7 @@ fun PurchaseBottomSheet(
         ) {
             // Nome acima da imagem
             Text(
-                text = item.name.ifBlank { "Item sem nome" },
+                text = item.name.ifBlank { "Item sem nome" }, //se tiver vazio mostra 'item sem nome'
                 style = MaterialTheme.typography.titleLarge
             )
 
@@ -84,11 +83,11 @@ fun PurchaseBottomSheet(
                 Button(
                     onClick = {
                         Toast.makeText(
-                            contexto,
+                            contexto, //contexto da app necessário para criar a toastr
                             "Acabou de comprar o item ${item.name} por $${String.format("%.2f", item.price)}",
                             Toast.LENGTH_LONG
-                        ).show()
-                        aoFechar()
+                        ).show() //mostra a toast no ecrã
+                        aoFechar() //a função chamada de fora para fechar a BottomSheet
                     }
                 ) {
                     Text("Comprar com 1-click")
@@ -105,13 +104,11 @@ fun PurchaseBottomSheet(
 @Preview
 @Composable
 fun PreviewPurchaseBottomSheet(){
-    val previewState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-
+    val previewState = rememberModalBottomSheetState(skipPartiallyExpanded = true) //cria um estado da bottomsheet
     // Força a sheet a abrir na preview
     LaunchedEffect(Unit) {
         previewState.show()
     }
-
     PurchaseBottomSheet(
         Item(
             1,

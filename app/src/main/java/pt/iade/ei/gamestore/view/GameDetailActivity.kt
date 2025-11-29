@@ -49,7 +49,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
     if (itemSelecionado != null) {
         PurchaseBottomSheet(
             item = itemSelecionado!!,
-            sheetState = sheetState, // ✅ estado passado como parâmetro
+            sheetState = sheetState, //estado passado como parâmetro
             aoFechar = { itemSelecionado = null }
         )
     }
@@ -80,7 +80,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
                 )
 
                 // Ícone de favorito à direita
-                IconButton(onClick = { /* ação futura */ }) {
+                IconButton(onClick = { /*nada por enquanto*/ }) {
                     Image(
                         painter = painterResource(id = R.drawable.icon_heart),
                         contentDescription = "Favorito",
@@ -90,8 +90,9 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
             }
         }
     )
+    //conteudo da activity
     { innerPadding ->
-        LazyColumn(
+        LazyColumn( //organiza verticalmente, mas só renderiza o que está visível
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
@@ -119,6 +120,7 @@ fun GameDetailScreen(game: Game, onBack: () -> Unit) {
 }
 
 @Composable
+//no caso de erro - se game for null
 fun ErrorScreen(message: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(message)
@@ -129,7 +131,8 @@ fun ErrorScreen(message: String) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGameDetailScreen() {
-    val sampleGame = GameController.getGamesList().first()
+    val sampleGame = GameController.getGamesList().first()//pega o primeiro jogo da lisa de jogos (que já contem dentro dele a lista de itens compraveis para mostrar no preview)
+
     // Não inicializamos itemSelecionado aqui → não aparece a BottomSheet
     GameDetailScreen(game = sampleGame, onBack = {})
 }

@@ -6,8 +6,9 @@ import pt.iade.ei.gamestore.R
 
 object GameController {
 
+    //função de mapeamento de imagens
     fun getImageFromUrl(url: String): Int {
-        return when (url) {
+        return when (url) { 
             "https://fake.api/images/thesims4" -> R.drawable.thesims4_gameimage
             "https://fake.api/images/horizonforbiddenwest" -> R.drawable.horizonforbiddenwest_gameimage
             "https://fake.api/images/animalcrossingnewhorizons" -> R.drawable.animalcrossingnewhorizons_gameimage
@@ -29,7 +30,7 @@ object GameController {
         }
     }
 
-
+    // função que devolve a lista de jogos
     fun getGamesList(): List<Game> {
         val simsItems = listOf(
             Item(1,"Cottage Living","https://fake.api/images/cottageliving","The Sims 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.", 39.99),

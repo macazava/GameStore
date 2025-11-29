@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import pt.iade.ei.gamestore.R
 import pt.iade.ei.gamestore.model.Game
 import pt.iade.ei.gamestore.controller.GameController
-import pt.iade.ei.gamestore.view.GameDetailActivity
 import pt.iade.ei.gamestore.view.ui.components.GameCard
 
 class MainActivity : ComponentActivity() {
@@ -35,8 +34,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val context = LocalContext.current
             MainScreen(games = games) { selectedGame ->
-                println("Clicado: ${selectedGame.name} com ID ${selectedGame.id}")
-                val intent = Intent(context, GameDetailActivity::class.java)
+                val intent = Intent(context, GameDetailActivity::class.java) //é criado um intent para abrir a maindetialactivity
                 intent.putExtra("gameId", selectedGame.id)
                 context.startActivity(intent)
             }

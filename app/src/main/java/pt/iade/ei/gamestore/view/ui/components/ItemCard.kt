@@ -61,14 +61,14 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
                 text = item.description.ifBlank { "Descrição não disponível." },
                 style = MaterialTheme.typography.bodySmall.copy(fontSize = 14.sp),
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis //define o que acontece quando o texto é maior do que o espaço disponível. -> corta o texto e coloca “…” no fim (reticências).
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
 
             Text(
-                text = String.format(" $%.2f ", item.price),
+                text = String.format(" $%.2f ", item.price),//converte o preço num formato com duas casas decimais usando string.format
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontSize = 15.sp
                 ),
@@ -82,6 +82,12 @@ fun ItemCard(item: Item, aoClicar: (Item) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewItemCard() {
-    val sampleItem = GameController.getGamesList().first().items.first() // Cottage Living
-    ItemCard(item = sampleItem, aoClicar = { println("Clicado: ${it.name}") })
+    val sampleItem = Item(
+        1,
+        "Cottage Living",
+        "https://fake.api/images/cottageliving",
+        "The Sims 4 Cottage Living oferece uma experiência campestre com animais, cultivo de alimentos frescos e uma comunidade unida. Interage com vacas e galinhas, cultiva vegetais e explora a aldeia para novas aventuras rurais.",
+        39.99
+    )
+    ItemCard(item = sampleItem, aoClicar = { })
 }

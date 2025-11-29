@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.gamestore.controller.GameController   // ✅ importa o controller
+import pt.iade.ei.gamestore.controller.GameController
 import pt.iade.ei.gamestore.model.Game
 
 @Composable
@@ -38,12 +38,12 @@ fun GameDetailCard(game: Game) {
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp)),
             contentScale = ContentScale.Crop,
-            alignment = Alignment.CenterEnd // foca na parte direita da imagem
+            alignment = Alignment.CenterEnd // foca a parte direita da imagem
         )
 
         // Texto à direita da imagem
         Text(
-            text = game.description.ifBlank { "." },
+            text = game.description.ifBlank { "." }, //mostra a descrição correspondente mas se estiver vazia mostra apenas um '.'
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 lineHeight = 17.sp
